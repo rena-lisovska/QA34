@@ -2,7 +2,7 @@ package lesson3_one_dimensional_arrays;
 
 import java.util.Arrays;
 
-public class Lesson3 {
+public class Lesson3_lecture_notes {
     public static void main(String[] args) {
         int sizeArray = 3;
         int[] array = new int[sizeArray];

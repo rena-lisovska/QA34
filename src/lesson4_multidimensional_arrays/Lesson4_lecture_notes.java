@@ -2,7 +2,7 @@ package lesson4_multidimensional_arrays;
 
 import java.util.Arrays;
 
-public class Lesson4 {
+public class Lesson4_lecture_notes {
     // row - строка
     // column - столбец
     public static void main(String[] args) {

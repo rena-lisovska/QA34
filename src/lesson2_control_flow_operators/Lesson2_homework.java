@@ -3,7 +3,7 @@ package lesson2_control_flow_operators;
 import java.util.Arrays;
 
 
-public class LisovskayaHW23 {
+public class Lesson2_homework {
     public static void main(String[] args) {
 // 1) Определение високосного года.
 // Год високосный если: делится на 4, НО если делится на 100 — не високосный, НО если делится на 400 — снова високосный.

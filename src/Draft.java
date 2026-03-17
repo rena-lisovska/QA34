@@ -1,6 +1,10 @@
 public class Draft {
 
     public static void main(String[] args) {
+
+//        ! почитать и освоить класс Scaner и  Random
+
+
         System.out.println();
         System.out.println("Результат вычислений по задаче:");
         // найти максимальное и минимальное значение в массиве и вывести на экран

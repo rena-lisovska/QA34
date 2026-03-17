@@ -1,6 +1,6 @@
 package lesson2_control_flow_operators;
 
-public class Lesson2 {
+public class Lesson2_lecture_notes {
 
     public static void main(String[] args) {
         int a = 12;

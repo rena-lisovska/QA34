@@ -1,6 +1,6 @@
 package lesson1_variables;
 
-public class Lesson1 {
+public class Lesson1_lecture_notes {
 
     private static float orderFirstPrice;
 

@@ -1,6 +1,6 @@
 package lesson1_variables;
 
-public class Lisovskaya1 {
+public class Lesson1_homework {
     public static void main(String[] args) {
 // 1.Даны две переменные: a=5, b=10. Напишите программу, которая меняет значением a и b местами (a должно стать 10, b - 5)
         int a = 5;
