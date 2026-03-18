@@ -21,13 +21,13 @@ public class Lesson1_homework {
         int arifMean = (a1 + b1 + c1) / divider; // эту переменную можно убрать и формулу перенести в println - логичнее здеь было бы использовать double
         System.out.println("Arithmetic mean for values: " + arifMean);
 
-//3. Создайте логические переменные (boolean): Совершеннолетний ли человек?  Пример: boolean c = age < 20
+// 3. Создайте логические переменные (boolean):
+// Совершеннолетний ли человек?  Пример: boolean c = age < 20
         System.out.println();
         System.out.println("Homework 1, task 3:");
         int age = 17;
         boolean adult = age >= 18;
         System.out.println("The user is of legal age: " + adult);
-
 // Зарплата больше 1000?
         int salaryUser = 1010;
         boolean moreValueSalary = salaryUser >= 1000;
