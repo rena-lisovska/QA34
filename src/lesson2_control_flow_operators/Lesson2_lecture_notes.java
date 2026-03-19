@@ -3,87 +3,220 @@ package lesson2_control_flow_operators;
 public class Lesson2_lecture_notes {
 
     public static void main(String[] args) {
-        int a = 12;
-        int b = 10;
-        int c = 10;
+// Немного про конструкции && и ||, и тернарный оператор --- ?
+//         && - и , || - или
+//         && true  и  false = false
+//         ||  true или false = true
 
-        //                   false   или  false
-        boolean isTrue = true && false || false;
-        //                     true
+        int a2 = 12;
+        int b2 = 10;
+        int c2 = 10;
+//                           false    или true
+        boolean isTrue = true && false || true;
+//                             true        и false
         boolean isFalse = (true || false) && false;
-
         System.out.println(isTrue);
+        System.out.println(isFalse);
 
-        // ? - тернарный оператор
-        //                     true    false
-        String name = a > b ? "name" : "null";
-
+//       ? - тернарный оператор
+//      переменная  = (условие) ? значение_если_true : значение_если_false;
+        String name = a2 > b2 ? "name" : "null";
         System.out.println(name);
 
 
-        // && - и , || - или
-        // && true  и  false = false
-        // ||  true или false = true
-
-        //  false || false
-//        if (a > b || b > c) {
-//            System.out.println("a max");
-//        } else if (b > c) {
-//            System.out.println("b > c");
-//        } else {
-//            System.out.println("all numbers is eqauls");
-//        }
-
-        if (a > b && a > c) {
+// 1. КОНСТРУКЦИЯ if (если) - else (иначе) . Всегда работает с типом boolean (результат должен быть либо true, либо false).
+//  1.1. Одинарная форма (Проверка условия).
+//  Используется, когда  нужно совершить действие только в одном случае, а в остальное время — просто ничего не делать.
+//  Пример: Система уведомлений
+        int messages = 5;
+        if (messages > 0) {
+            System.out.println("У вас есть непрочитанные сообщения!"); // Если сообщений 0, программа просто пойдёт дальше, ничего не печатая.
+        }
+//  1.2. Полная форма if-else (Развилка).
+//  Когда у нас есть два взаимоисключающих пути. Либо одно, либо другое — третьего не дано.
+//  Пример: Вход в систему
+        String password = "1234";
+        if (password.equals("1234")) {
+            System.out.println("Доступ разрешен. Добро пожаловать!");
+        } else {
+            System.out.println("Ошибка! Неверный пароль.");
+        }
+//  1.3. Лестница else if (Множественный выбор)
+//  Используется, когда вариантов много, и нам нужно найти первый подходящий. Как только Java находит true, она выполняет этот блок и игнорирует все остальные, что ниже.
+//  Пример: Расчет скидки в магазине
+        int purchaseAmount = 5000;
+        if (purchaseAmount >= 10000) {
+            System.out.println("Ваша скидка 15%");
+        } else if (purchaseAmount >= 5000) {
+            System.out.println("Ваша скидка 10%"); // Сработает этот блок
+        } else if (purchaseAmount >= 1000) {
+            System.out.println("Ваша скидка 5%");
+        } else {
+            System.out.println("Скидки нет, купите еще что-нибудь!");
+        }
+//  1.4. Вложенные условия (Уточнение)
+//  Когда второе решение зависит от результата первого. Это как матрешка: чтобы проверить внутреннее условие, нужно сначала пройти через внешнее.
+//  Пример: Покупка билета в кино
+        int age = 16;
+        boolean hasMoney = false;
+        if (age >= 16) {
+            if (hasMoney) {
+                System.out.println("Билет куплен, приятного просмотра!");
+            } else {
+                System.out.println("Денег нет, возвращайтесь завтра.");
+            }
+        } else {
+            System.out.println("Извините, этот фильм только для тех, кто старше 16.");
+        }
+//  1.5. Комбинирование условий (&&, ||)
+//  Часто вместо вложенных if удобнее использовать логические операторы прямо в скобках. Это делает код чище.
+//  Пример: Допуск к экзамену
+        int attendance = 85; // посещаемость в %
+        int grades = 4; // средний балл
+        if (attendance > 80 && grades >= 4) {
+            System.out.println("Вы допущены к экзамену автоматически!");
+        } else {
+            System.out.println("Нужно сдать дополнительные зачеты.");
+        }
+//  Примеры из лекции:
+//  Пример 1: int a2 = 12; int b2 = 10;  int c2 = 10;
+        if (a2 > b2 && a2 > c2) {
             System.out.println("a max value");
-        } else if (b > c) {
+        } else if (b2 > c2) {
             System.out.println("b max value");
         } else {
             System.out.println("c max value");
         }
-
+// Пример 2: Првоерить число положительное или нет, если положительное, то чётное или нет (if)
+        int number = 12345;
+        if (number > 0) {
+            if (number % 2 == 0) {
+                System.out.println("number is even and more than 0");
+            } else {
+                System.out.println("number is odd add more than 0");
+            }
+        } else {
+            System.out.println("number less than 0 or eqauls 0");
+        }
+//  Пример 2: с тернарным оператором
         String nameJunior = "senior";
         String nameSenior = "senior";
         String nameProgrammist = nameJunior == nameSenior ? "name" : "null";
         System.out.println(nameProgrammist);
-//                     ==
+//                       ==                  ! именно через equals идёт сравнение для строковых данных
         if (nameJunior.equals(nameSenior)) {
-            System.out.println("output");
+            System.out.println("Имена одинаковые!");
+        } else {
+            System.out.println("Это разные люди.");
+        }
+//        А что если нам всё равно, большая буква или маленькая в имени (помним в Java у нас есть регистрозависомость)? Тогда используем продвинутый вариант этого метода equalsIgnoreCase:
+        if (nameJunior.equalsIgnoreCase(nameSenior)) {
+            System.out.println("Имена совпадают, регистр не важен");
         }
 
-//        String dayOfWeek = "Tuesday1";
-//        switch (dayOfWeek) {
-//            case "Monday", "Monday1":
-////                if (){
-////
-////                }
-//                System.out.println("today monday");
-//                break;
-//            case "Tuesday", "Tuesday1":
-//                System.out.println("today is tuesday");
-//                break;
-//            case "Wensday":
-//                System.out.println("today is wensday");
-//                break;
-//            default:
-//                System.out.println("rest");
-////                break;
-//        }
+//  2. КОНСТРУКЦИЯ switch
+//  2.1. Главные правила работы
+//  break — это стена. Если ты его забудешь, Java выполнит код текущего case и провалится во все следующие, пока не встретит break или конец конструкции.
+//  default — это план «Б». Он сработает, если ни один case не совпал с твоей переменной. Это как else в конце длинной цепочки.
+//  Типы данных. switch дружит с int, char, String и enum. Но он не умеет работать с double, float или сложными логическими условиями (например, case > 10 написать нельзя).
+//  Пример: представь, что мы пишем программу для кофейного автомата. Пользователь вводит номер напитка:
+        int choice = 2;
+        switch (choice) {
+            case 1:
+                System.out.println("Готовлю Эспрессо");
+                break;
+            case 2:
+                System.out.println("Готовлю Капучино");
+                break;
+            case 3:
+                System.out.println("Готовлю Латте");
+                break;
+            default:
+                System.out.println("Ошибка: напитка под таким номером нет");
+                break;
+        }
+//  2.2. Группировка кейсов
+//  Иногда для разных вариантов нужно выполнить одно и то же действие. Тогда case можно «пакетировать»:
+        int day = 6;
+        switch (day) {
+            case 1: case 2: case 3: case 4: case 5:
+                System.out.println("Рабочий день...");
+                break;
+            case 6: case 7:
+                System.out.println("Ура, выходные!");
+                break;
+        }
+//  2.3. Современный switch (Java 14+)
+//  В новых версиях Java (которые ты, скорее всего, и учишь) появился более крутой синтаксис со стрелочками. Он автоматически делает break и выглядит намного чище:
+        String fruit = "Apple";
+        switch (fruit) {
+            case "Apple" -> System.out.println("Красное или зеленое");
+            case "Banana" -> System.out.println("Желтое");
+            default -> System.out.println("Неизвестный фрукт");
+        }
+
+//  Примеры из лекции:
+//  Пример 1
+        String dayOfWeek = "Tuesday1";
+        switch (dayOfWeek) {
+            case "Monday", "Monday1":
+                System.out.println("today monday");
+                break;
+            case "Tuesday", "Tuesday1":
+                System.out.println("today is tuesday");
+                break;
+            case "Wensday":
+                System.out.println("today is wensday");
+                break;
+            default:
+                System.out.println("rest");
+                break;
+        }
 
 //        if (dayOfWeek == "Tuesday" || dayOfWeek == "Tuesday1"){
-//
 //        }
+//  Пример 2
+        switch (dayOfWeek) { // перебор, когда значения заранее известны
+            case "Monday", "Monday1" -> System.out.println("today monday");
+            case "Tuesday", "Tuesday1" -> System.out.println("today is tuesday");
+            case "Wensday" -> System.out.println("today is wensday");
+            default -> System.out.println("rest");
+        }
 
-//        switch (dayOfWeek) { // перебор, когда занчения заранее известны
-//            case "Monday", "Monday1" -> {
-////                if (){}
-//                System.out.println("today monday");
-//            }
-//            case "Tuesday", "Tuesday1" -> System.out.println("today is tuesday");
-//            case "Wensday" -> System.out.println("today is wensday");
-//            default -> System.out.println("rest");
-////                break;
+//  Пример 3
+        int num1 = 10;
+        int num2 = 12;
+        String operation = "*";
+        int summa;
+        switch (operation) {
+            case "+" -> {
+                summa = num1 + num2;
+            }
+            case "-" -> {
+                summa = num1 - num2;
+            }
+            default -> {
+                summa = 0;
+                System.err.println("unknown operation"); // error
+            }
+        }
+        System.out.println("summa: " + summa);
+
+//  3. ЦИКЛЫ
+//  3.1. Цикл for (Счетчик)
+//  Его используют, когда мы заранее знаем, сколько раз нужно повторить действие (например, пройти по массиву из 6 элементов).
+//        for (инициализация; условие; шаг) {
+//            // Код, который повторится
 //        }
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Итерация №" + i);
+        }
+//  int i = 1 — создаем переменную-счетчик.
+//  i <= 5 — цикл работает, пока это правда.
+//  i++ — после каждого круга увеличиваем i на 1.
+
+
+
 
         // while, do while, for (2 вида)
         int f = 6;
@@ -97,39 +230,23 @@ public class Lesson2_lecture_notes {
             increment++;
         }
 
-//        do {
-//            increment++;
-//            System.out.println("something");
-//        } while(increment < 10);
+        do {
+            increment++;
+            System.out.println("something");
+        } while(increment < 10);
 
 
-        // Practice
-        // 1 task
-        int number = 12345; // првоерить число положительное или нет, если положительное, то чётное или нет (if)
-
-        if (number > 0) {
-            if (number % 2 == 0) {
-                System.out.println("number is even and more than 0");
-            } else {
-                System.out.println("number is odd add more than 0");
-            }
-        } else {
-            System.out.println("number less than 0 or eqauls 0");
-        }
-
-//        int ter = number % 2 == 0 ? 0 : 1;
-//        System.out.println(ter);
 
         // найти сумму от 1 до number 1 + 2 + 3 ... number
 
-//        int increment = 0;
-//        while (increment < 10) {
-//            System.out.println("output: " + increment);
-//            increment++;
-//        }
+        int increment1 = 0;
+        while (increment1 < 10) {
+            System.out.println("output: " + increment1);
+            increment1++;
+        }
 
-//        int sum1 = 0;
-//        sum1 = sum1 + 1;
+        int sum1 = 0;
+        sum1 = sum1 + 1;
 //
         int incrementValue = 0;
         int sum = 0; // 15
@@ -160,37 +277,19 @@ public class Lesson2_lecture_notes {
         System.out.println("count numbers: " + inc);
 
 
-        int num1 = 10;
-        int num2 = 12;
 
-        String operation = "*";
-        int summa;
-        switch (operation) {
-            case "+" -> {
-                summa = num1 + num2;
-            }
-            case "-" -> {
-                summa = num1 - num2;
-            }
-            default -> {
-                summa = 0;
-                System.err.println("unknown operation"); // error
-            }
-        }
-
-        System.out.println("summa: " + summa);
 
         int totalSeconds = 12623;
         int hours = 0;
         int min = 0;
 
-        while(totalSeconds >= 3600){
+        while (totalSeconds >= 3600) {
             totalSeconds = totalSeconds - 3600;
             hours++;
 //            hours += 1;
         }
 
-        while (totalSeconds >= 60){
+        while (totalSeconds >= 60) {
 //            if () {
 //
 //            }
