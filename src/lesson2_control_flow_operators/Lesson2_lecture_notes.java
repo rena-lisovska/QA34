@@ -139,10 +139,15 @@ public class Lesson2_lecture_notes {
 //  Иногда для разных вариантов нужно выполнить одно и то же действие. Тогда case можно «пакетировать»:
         int day = 6;
         switch (day) {
-            case 1: case 2: case 3: case 4: case 5:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
                 System.out.println("Рабочий день...");
                 break;
-            case 6: case 7:
+            case 6:
+            case 7:
                 System.out.println("Ура, выходные!");
                 break;
         }
@@ -203,22 +208,56 @@ public class Lesson2_lecture_notes {
         System.out.println("summa: " + summa);
 
 //  3. ЦИКЛЫ
-//  3.1. Цикл for (Счетчик)
-//  Его используют, когда мы заранее знаем, сколько раз нужно повторить действие (например, пройти по массиву из 6 элементов).
+//  3.1. Цикл for (счетчик)
+//   Его используют, когда мы заранее знаем, сколько раз нужно повторить действие (например, пройти по массиву из 6 элементов).
 //        for (инициализация; условие; шаг) {
 //            // Код, который повторится
 //        }
         for (int i = 1; i <= 5; i++) {
             System.out.println("Итерация №" + i);
         }
-//  int i = 1 — создаем переменную-счетчик.
-//  i <= 5 — цикл работает, пока это правда.
-//  i++ — после каждого круга увеличиваем i на 1.
+//   int i = 1 — создаем переменную-счетчик.
+//   i <= 5 — цикл работает, пока это правда.
+//   i++ — после каждого круга увеличиваем i на 1.
+
+//  3.2. Цикл for-each (переводится как "для каждог"о) - представь, что это как автоматичесий перебор данных по порядку.
+//   Не нужно считать (прописывать вручную), сколько элементов в списке, и не нужно обращаться к ним по номеру (индексу). Java сама берет каждый элемент по очереди и выполняет с ним необходимую операцию.
+//   Когда for-each идеален? --- 1. Когда нужно просто прочитать все данные из массива, 2. Когда не важен порядковый номер (индекс) элемента.
+//   Пример 1. Представь, что у нас есть массив:
+        String[] fruits = {"Яблоко", "Банан", "Груша"};
+//   Читается так: "Для каждой строки (String f) из массива (fruits)"
+        for (String f : fruits) {
+            System.out.println("В корзине лежит: " + f);
+        }
+//   Пример 2. Допустим, у тебя есть цены на товары, и ты хочешь узнать общую сумму:
+        int[] prices = {100, 250, 500, 150};
+        int total = 0;
+        for (int price : prices) {
+            total += price; // Просто прибавляем каждую цену к общей сумме
+        }
+        System.out.println("Итого к оплате: " + total);
+
+//  3.3. Цикл while (пока)
+//   Его используют, когда мы не знаем точно, сколько будет повторений. Цикл работает до тех пор, пока условие истинно.
+//   Пример: Герой лечится, пока здоровье меньше 100
+        int health = 80;
+        while (health < 100) {
+            health += 5;
+            System.out.println("Лечимся... Текущее HP: " + health);
+        }
+//   Внимание: Если условие изначально false (например, health уже 100), цикл ни разу не выполнится.
+
+//  3.4. Цикл do-while (Сначала делай — потом думай)
+//   Этот цикл похож на while, но с одной важной разницей: он гарантированно выполнится хотя бы один раз, даже если условие сразу ложное. Проверка условия идет в самом конце.
+//   Пример: Проверка пароля
+        int attempts = 0;
+        do {
+            attempts++;
+            System.out.println("Попытка ввода пароля №" + attempts);
+        } while (attempts < 0); // Условие ложное, но 1 раз мы всё равно зашли
 
 
-
-
-        // while, do while, for (2 вида)
+//  Примеры из лекции на while и do while
         int f = 6;
         f++; // increment
         f--; // decrement
@@ -233,12 +272,9 @@ public class Lesson2_lecture_notes {
         do {
             increment++;
             System.out.println("something");
-        } while(increment < 10);
-
-
+        } while (increment < 10);
 
         // найти сумму от 1 до number 1 + 2 + 3 ... number
-
         int increment1 = 0;
         while (increment1 < 10) {
             System.out.println("output: " + increment1);
@@ -247,7 +283,6 @@ public class Lesson2_lecture_notes {
 
         int sum1 = 0;
         sum1 = sum1 + 1;
-//
         int incrementValue = 0;
         int sum = 0; // 15
         // 5        <    7
@@ -259,14 +294,11 @@ public class Lesson2_lecture_notes {
         }
         System.out.println("sum: " + sum);
 
-
         // 14575 - / 10  , 1457 / 10 - 145, 145 / 10 - 14, 14 / 10, 1 / 10 = 0
-
         int number2 = 144;
         number2 = number2 / 10;
 //        number2 /= 10;
         System.out.println(number2);
-
 
         int inc = 0;
 //        != неравно
@@ -276,13 +308,9 @@ public class Lesson2_lecture_notes {
         }
         System.out.println("count numbers: " + inc);
 
-
-
-
         int totalSeconds = 12623;
         int hours = 0;
         int min = 0;
-
         while (totalSeconds >= 3600) {
             totalSeconds = totalSeconds - 3600;
             hours++;
@@ -296,9 +324,17 @@ public class Lesson2_lecture_notes {
             totalSeconds = totalSeconds - 60;
             min++;
         }
-
         System.out.println(hours + " " + min + " " + totalSeconds);
 
-    }
 
+//  4. Ключевые слова break и continue
+//  Это "пульт управления" внутри любого цикла:
+//   break — полностью останавливает цикл и выходит из него.
+//   continue — пропускает текущий круг и сразу переходит к следующему.
+//  Пример с continue (пропускаем число 3):
+        for (int i = 1; i <= 5; i++) {
+            if (i == 3) continue; // Тройка не напечатается
+            System.out.println(i);
+        }
+    }
 }
